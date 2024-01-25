@@ -11,7 +11,7 @@ import java.util.UUID;
 public interface UserService {
     List<User> searchAll();
 
-    Optional<Project> searchById(UUID id);
+    Optional<User> searchById(UUID id);
 
     User create(User user);
 
