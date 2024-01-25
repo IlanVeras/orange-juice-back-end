@@ -5,9 +5,10 @@ import org.springframework.stereotype.Repository;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
-
+    List<User> findByName(String name);
 }
