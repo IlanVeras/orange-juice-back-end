@@ -3,13 +3,12 @@ package portifolioOrange.com.example.orangeJuice.app.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import portifolioOrange.com.example.orangeJuice.app.UserApi;
 import portifolioOrange.com.example.orangeJuice.app.dto.request.user.CreateUserRequest;
 import portifolioOrange.com.example.orangeJuice.app.dto.response.user.UserResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
+import portifolioOrange.com.example.orangeJuice.domain.exception.UserNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.service.UserService;
 
 import java.util.List;
@@ -23,6 +22,15 @@ public class UserController implements UserApi {
     private final UserService userService;
 
     private final ObjectMapper mapper;
+
+
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+
 
     public UserController(UserService userService, ObjectMapper mapper) {
         this.userService = userService;
@@ -47,7 +55,7 @@ public class UserController implements UserApi {
     public ResponseEntity<List<UserResponse>> searchAll() {
         List<User> userList = userService.searchAll();
         List<UserResponse> userResponseList = userList.stream()
-                .map(user -> new UserResponse(user.getId(), user.getName(), user.getSurname(), user.getEmail()))
+                .map(user -> new UserResponse(user.getId(), user.getName(), user.getSurname(),user.getNacionalidade(), user.getEmail()))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(userResponseList);
@@ -88,7 +96,7 @@ public class UserController implements UserApi {
     public ResponseEntity<List<UserResponse>> searchByName(@PathVariable String name) {
         List<User> userList = userService.searchByName(name);
         List<UserResponse> userResponseList = userList.stream()
-                .map(user -> new UserResponse(user.getId(), user.getName(), user.getSurname(), user.getEmail()))
+                .map(user -> new UserResponse(user.getId(), user.getName(), user.getSurname(),user.getNacionalidade(), user.getEmail()))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(userResponseList);

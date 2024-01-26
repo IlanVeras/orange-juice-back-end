@@ -13,6 +13,10 @@ public class CreateUserRequest {
     @NotBlank
     @JsonProperty("surname")
     private String surname;
+
+    @NotBlank
+    @JsonProperty("nacionalidade")
+    private String nacionalidade;
     @NotBlank
     @JsonProperty("email")
     private String email;

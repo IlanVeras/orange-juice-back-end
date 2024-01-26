@@ -29,6 +29,11 @@ public class User {
 
     private String surname;
 
+    @Column(length = 80, nullable = false)
+
+    private String nacionalidade;
+
+
 
     @Column(length = 255, nullable = false, unique = true)
     private String email;

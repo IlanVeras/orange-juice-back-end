@@ -53,7 +53,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> searchByName(String name) {
-        return userRepository.findByName(name);
+        List<User> users = userRepository.findByName(name);
+        if (users.isEmpty()) {
+            throw new UserNotFoundException(name);
+        }
+        return users;
     }
 
 

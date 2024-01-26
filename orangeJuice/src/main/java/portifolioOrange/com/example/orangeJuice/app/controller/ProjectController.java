@@ -4,16 +4,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import portifolioOrange.com.example.orangeJuice.app.ProjectApi;
 import portifolioOrange.com.example.orangeJuice.app.dto.request.project.CreateProjectRequest;
 import portifolioOrange.com.example.orangeJuice.app.dto.response.project.ProjectResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
+import portifolioOrange.com.example.orangeJuice.domain.exception.ProjectNotFoundException;
+
 import portifolioOrange.com.example.orangeJuice.domain.service.ProjectService;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -26,6 +29,12 @@ public class ProjectController implements ProjectApi {
     public ProjectController(ProjectService projectService, ObjectMapper mapper) {
         this.projectService = projectService;
         this.mapper = mapper;
+    }
+
+    @ExceptionHandler(ProjectNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleProjectNotFoundException(ProjectNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
     private ProjectResponse projectToProductDetailedResponse(Project project) {

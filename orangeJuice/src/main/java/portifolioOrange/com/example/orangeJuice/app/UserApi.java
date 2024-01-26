@@ -2,9 +2,6 @@ package portifolioOrange.com.example.orangeJuice.app;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import portifolioOrange.com.example.orangeJuice.app.dto.request.user.CreateUserRequest;
@@ -39,5 +36,7 @@ public interface UserApi {
     @DeleteMapping("deletar/{id}")
     ResponseEntity<Void> delete(@PathVariable UUID id);
 
+    @Operation(summary = "Buscar pelo nome do usuário", method = "GET")
+    @GetMapping("/buscarPorNome/{name}")
     ResponseEntity<List<UserResponse>> searchByName(@PathVariable String name);
 }

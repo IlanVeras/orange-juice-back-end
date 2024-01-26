@@ -19,7 +19,9 @@ public class UserResponse {
 
     private String surname;
 
-    
+
+    private String nacionalidade;
+
     private String email;
 
 
