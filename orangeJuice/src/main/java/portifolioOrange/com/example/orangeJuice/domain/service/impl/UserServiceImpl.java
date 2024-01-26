@@ -1,15 +1,13 @@
 package portifolioOrange.com.example.orangeJuice.domain.service.impl;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
+import portifolioOrange.com.example.orangeJuice.domain.exception.UserNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.repository.UserRepository;
 import portifolioOrange.com.example.orangeJuice.domain.service.UserService;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-
+import java.util.*;
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -25,36 +23,38 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> searchById(UUID id) {
-        return userRepository.findById(id);
+    public User searchById(UUID id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
-
+    
 
     @Override
     public User create(User user) {
         return userRepository.save(user);
     }
 
+    @Override
     public User update(UUID id, Map<String, Object> params) {
-        Optional<User> optionalUser = userRepository.findById(id);
+        User userToUpdate = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 
-        optionalUser.ifPresent(user -> {
-            user.setSurname(params.getOrDefault("name", user.getSurname()).toString());
-            user.setSurname(params.getOrDefault("surname", user.getSurname()).toString());
-            user.setEmail(params.getOrDefault("email", user.getEmail()).toString());
-            user.setPassword(params.getOrDefault("password", user.getPassword()).toString());
-        });
+        userToUpdate.setName(params.getOrDefault("name", userToUpdate.getName()).toString());
+        userToUpdate.setSurname(params.getOrDefault("surname", userToUpdate.getSurname()).toString());
+        userToUpdate.setEmail(params.getOrDefault("email", userToUpdate.getEmail()).toString());
+        userToUpdate.setPassword(params.getOrDefault("password", userToUpdate.getPassword()).toString());
 
-        return optionalUser.orElse(null);
+        return userRepository.save(userToUpdate);
     }
 
     @Override
     public void delete(UUID id) {
-        Optional<User> optionalUser = userRepository.findById(id);
-
-        optionalUser.ifPresent(user -> {
-            userRepository.delete(user);
-        });
+        userRepository.findById(id).ifPresent(userRepository::delete);
     }
+
+
+    @Override
+    public List<User> searchByName(String name) {
+        return userRepository.findByName(name);
+    }
+
 
 }

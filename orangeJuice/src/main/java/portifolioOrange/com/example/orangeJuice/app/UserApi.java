@@ -38,4 +38,6 @@ public interface UserApi {
     @Operation(summary = "deleta um usuário", method = "DELETE")
     @DeleteMapping("deletar/{id}")
     ResponseEntity<Void> delete(@PathVariable UUID id);
+
+    ResponseEntity<List<UserResponse>> searchByName(@PathVariable String name);
 }

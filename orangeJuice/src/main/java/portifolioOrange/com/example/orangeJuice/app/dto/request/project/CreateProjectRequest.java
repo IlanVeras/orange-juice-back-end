@@ -1,18 +1,18 @@
 package portifolioOrange.com.example.orangeJuice.app.dto.request.project;
 
-import java.sql.Date;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Schema(hidden = true)
 public class CreateProjectRequest {
-    @NotBlank
-    @JsonProperty("usuario")
-    private Usuario usuario;
+
 
     @NotBlank
     @JsonProperty("titleProject")
@@ -28,6 +28,6 @@ public class CreateProjectRequest {
     
     @NotBlank
     @JsonProperty("date")
-    private Date date;
+    private LocalDateTime date;
 
 }

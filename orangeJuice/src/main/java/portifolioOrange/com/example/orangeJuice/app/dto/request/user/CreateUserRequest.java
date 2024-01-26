@@ -3,8 +3,8 @@ package portifolioOrange.com.example.orangeJuice.app.dto.request.user;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
+ import io.swagger.v3.oas.annotations.media.Schema;
+ import jakarta.validation.constraints.NotBlank;
 @Schema(hidden = true)
 public class CreateUserRequest {
     @NotBlank

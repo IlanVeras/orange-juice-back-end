@@ -22,7 +22,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = 50, nullable = false)
     private String name;
 
     @Column(length = 255, nullable = false)

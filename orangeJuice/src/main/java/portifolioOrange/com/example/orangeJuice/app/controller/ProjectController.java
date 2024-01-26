@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*")
 public class ProjectController implements ProjectApi {
     private final ProjectService projectService;
-
     private final ObjectMapper mapper;
 
     public ProjectController(ProjectService projectService, ObjectMapper mapper) {
@@ -29,16 +28,16 @@ public class ProjectController implements ProjectApi {
         this.mapper = mapper;
     }
 
-    private ProjectResponse projectToProductDetailedResponse(Project project){
+    private ProjectResponse projectToProductDetailedResponse(Project project) {
         return mapper.convertValue(project, ProjectResponse.class);
     }
 
     @Override
     public ResponseEntity<ProjectResponse> create(CreateProjectRequest request) {
         Project project = mapper.convertValue(request, Project.class);
-        Project createdUser = projectService.create(project);
+        Project createdProject = projectService.create(project);
 
-       ProjectResponse projectResponse = projectToProductDetailedResponse(createdProject);
+        ProjectResponse projectResponse = projectToProductDetailedResponse(createdProject);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(projectResponse);
     }
@@ -47,20 +46,19 @@ public class ProjectController implements ProjectApi {
     public ResponseEntity<List<ProjectResponse>> searchAll() {
         List<Project> projectList = projectService.searchAll();
         List<ProjectResponse> projectResponseList = projectList.stream()
-                .map(project -> new ProjectResponse(project.getId(), project.getUsuario(),project.getTitleProject(),project.getLink(), project.getDate()))
+                .map(project -> new ProjectResponse(project.getId(), project.getTitleProject(), project.getLink(), project.getDescription() ,project.getDate()))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(projectResponseList);
     }
 
-
     @Override
     public ResponseEntity<ProjectResponse> searchById(UUID id) {
-        Optional<Project> project = projectService.searchById(id);
+        Project project = projectService.searchById(id);
+        ProjectResponse projectResponse =  projectToProductDetailedResponse(project);
 
-        if (project.isPresent()) {
-            ProjectResponse projectResponse = projectToProductDetailedResponse(project.get());
-            return ResponseEntity.ok(ProjectResponse);
+        if(project != null) {
+            return ResponseEntity.ok(projectResponse);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -68,10 +66,14 @@ public class ProjectController implements ProjectApi {
 
     @Override
     public ResponseEntity<ProjectResponse> update(UUID id, Map<String, Object> params) {
-        Project  project = projectService.update(id,params);
+        Project project = projectService.update(id, params);
         ProjectResponse projectResponse = projectToProductDetailedResponse(project);
 
-        return ResponseEntity.accepted().body(ProjectResponse);
+        if(project != null) {
+            return ResponseEntity.accepted().body(projectResponse);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Override

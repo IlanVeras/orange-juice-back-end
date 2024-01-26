@@ -5,17 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
+
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse {
+public class ProjectResponse {
 
     private UUID id;
 
-    private Usuario usuario;
+
 
     private String titleProject;
 
@@ -23,6 +27,7 @@ public class UserResponse {
 
     private String description;
 
-    private Date date;
+    private LocalDateTime date;
+
 
 }

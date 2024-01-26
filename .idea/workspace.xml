@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42449cd9-a674-402c-b85a-156101ad42c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/project/CreateProjectRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/project/CreateProjectRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/project/JsonProperty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/user/CreateUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/user/CreateUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/response/project/ProjectResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/response/project/ProjectResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/response/project/UserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/entity/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/ProjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/impl/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/impl/UserServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": -1
+}]]></component>
+  <component name="ProjectId" id="2bUs3B4KTmpqdGBiMpFFqir1OGJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42449cd9-a674-402c-b85a-156101ad42c3" name="Changes" comment="" />
+      <created>1706280790111</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706280790111</updated>
+    </task>
+    <servers />
+  </component>
+</project>

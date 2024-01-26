@@ -8,24 +8,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
+
+import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(project= "project")
-@Table(project = "projects")
+@Entity(name= "project")
+@Table(name = "projects")
 @JsonIgnoreProperties
 public class Project {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotNull
     @ManyToOne
-    @Column(length = 255, nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
+
 
     @Column(length = 255, nullable = false)
     private String titleProject;
@@ -37,7 +43,9 @@ public class Project {
     @Column(length = 255, nullable = false)
     private String description;
 
-    @Column (length = 8, nullable = false )
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    private Date date;
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime date;
+
+
 }

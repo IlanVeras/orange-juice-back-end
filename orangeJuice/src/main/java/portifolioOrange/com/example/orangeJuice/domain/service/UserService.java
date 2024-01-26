@@ -5,17 +5,22 @@ import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface UserService {
+
+
+    List<User> searchByName(String name);
+
     List<User> searchAll();
 
-    Optional<User> searchById(UUID id);
+    User searchById(UUID id);
 
-    User create(User user);
+   User create(User user);
 
     User update(UUID id, Map<String, Object> params);
 
     void delete(UUID id);
+
+
 }

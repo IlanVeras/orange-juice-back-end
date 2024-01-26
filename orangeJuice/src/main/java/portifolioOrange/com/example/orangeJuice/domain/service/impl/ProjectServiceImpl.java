@@ -2,6 +2,8 @@ package portifolioOrange.com.example.orangeJuice.domain.service.impl;
 
 import org.springframework.stereotype.Service;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
+import portifolioOrange.com.example.orangeJuice.domain.exception.ProjectNotFoundException;
+import portifolioOrange.com.example.orangeJuice.domain.exception.UserNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.repository.ProjectRepository;
 import portifolioOrange.com.example.orangeJuice.domain.service.ProjectService;
 
@@ -13,49 +15,48 @@ import java.util.UUID;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
-    private final ProjectRepository ProjectRepository;
+    private final ProjectRepository projectRepository;
 
     public ProjectServiceImpl(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 
-    //TRAZER TODOS os projetos
     @Override
     public List<Project> searchAll() {
         return projectRepository.findAll();
     }
-    // TRAZER os projetos por ID
+
+
     @Override
-    public Optional<Project> searchById(UUID id) {
-        return projectRepository.findById(id);
+    public Project searchById(UUID id) {
+        return projectRepository.findById(id).orElseThrow(() -> new ProjectNotFoundException(id));
+
     }
 
-    //CRIAR novos projetos na API
+
     @Override
     public Project create(Project project) {
         return projectRepository.save(project);
     }
 
-    //ATUALIZAR dados do projeto
+
+    @Override
     public Project update(UUID id, Map<String, Object> params) {
-        Optional<Project> optionalProject = projectRepository.findById(id);
+        Project projectToUpdate = projectRepository.findById(id).orElseThrow(() -> new ProjectNotFoundException(id));
 
-        optionalproject.ifPresent(project -> {
-            project.setTitleProject(params.getOrDefault("titleProject", project.getTitleProject()).toString());
-            project.setLink(params.getOrDefault("link", project.getLink()).toString());
-            project.setDescription(params.getOrDefault("description", project.getDescription()).toString());
-        });
+        projectToUpdate.setTitleProject(params.getOrDefault("titleProject", projectToUpdate.getTitleProject()).toString());
+        projectToUpdate.setLink(params.getOrDefault("link", projectToUpdate.getLink()).toString());
+        projectToUpdate.setDescription(params.getOrDefault("description", projectToUpdate.getDescription()).toString());
 
-        return optionalProject.orElse(null);
+        return projectRepository.save(projectToUpdate);
     }
-    //DELETAR projeto por ID
+
+
+
     @Override
     public void delete(UUID id) {
-        Optional<Project> optionalProject = projectRepository.findById(id);
-
-        optionalProject.ifPresent(project -> {
-            projectRepository.delete(project);
-        });
+        projectRepository.findById(id).ifPresent(projectRepository::delete);
     }
+
 
 }
