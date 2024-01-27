@@ -1,6 +1,5 @@
 package portifolioOrange.com.example.orangeJuice.domain.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,34 +14,18 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name= "user")
-@Table(name = "users")
+@Entity(name= "tag")
+@Table(name = "tags")
 @JsonIgnoreProperties
-public class User {
+public class Tag {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 20, nullable = false)
     private String name;
 
-    @Column(length = 255, nullable = false)
-
-    private String surname;
-
-    @Column(length = 80, nullable = false)
-
-    private String nacionalidade;
-
-
-
-    @Column(length = 255, nullable = false, unique = true)
-    private String email;
-
-    @Column(length = 255, nullable = false)
-    private String password;
-
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "tags")
     private List<Project> projects;
 }

@@ -9,6 +9,8 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 @Schema(hidden = true)
 public class CreateProjectRequest {
@@ -29,5 +31,6 @@ public class CreateProjectRequest {
     @NotBlank
     @JsonProperty("date")
     private LocalDateTime date;
+
 
 }

@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
 
 @Getter
 @Setter
