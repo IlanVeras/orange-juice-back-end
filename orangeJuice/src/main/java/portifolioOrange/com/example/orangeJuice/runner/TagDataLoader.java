@@ -21,8 +21,7 @@ public class TagDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Lista de tags
-        // Lista de tags
+   
         List<String> tagNames = Arrays.asList(
                 "JavaScript", "HTML", "CSS", "Java", "Python", "Ruby", "Swift", "TypeScript", "C#",
                 "ReactJS", "Angular", "VueJS", "NodeJS", "Django", "RubyonRails", "SpringFramework",
@@ -36,10 +35,10 @@ public class TagDataLoader implements CommandLineRunner {
                 "CareerAdvice", "RemoteWork", "Freelancing", "TechJobs", "TechLeadership"
         );
 
-// Salva as tags no banco de dados
+
         for (String tagName : tagNames) {
             Tag tag = new Tag();
-            tag.setName(tagName.substring(0, Math.min(tagName.length(), 20))); // Limita o comprimento a 20 caracteres
+            tag.setName(tagName.substring(0, Math.min(tagName.length(), 20)));
             tagRepository.save(tag);
         }
 
