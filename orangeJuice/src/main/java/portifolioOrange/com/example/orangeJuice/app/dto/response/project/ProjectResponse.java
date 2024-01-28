@@ -20,8 +20,6 @@ public class ProjectResponse {
 
     private UUID id;
 
-
-
     private String titleProject;
 
     private String link;
@@ -29,6 +27,5 @@ public class ProjectResponse {
     private String description;
 
     private LocalDateTime date;
-
 
 }

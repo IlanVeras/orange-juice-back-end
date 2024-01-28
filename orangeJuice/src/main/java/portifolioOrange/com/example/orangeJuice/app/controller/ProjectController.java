@@ -11,7 +11,6 @@ import portifolioOrange.com.example.orangeJuice.app.ProjectApi;
 import portifolioOrange.com.example.orangeJuice.app.dto.request.project.CreateProjectRequest;
 import portifolioOrange.com.example.orangeJuice.app.dto.response.project.ProjectResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
-import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
 import portifolioOrange.com.example.orangeJuice.domain.exception.ProjectNotFoundException;
 
 import portifolioOrange.com.example.orangeJuice.domain.service.ProjectService;

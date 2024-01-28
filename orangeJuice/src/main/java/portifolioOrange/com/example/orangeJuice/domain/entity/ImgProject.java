@@ -8,8 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Base64;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 
 @Getter
 @Setter
@@ -21,12 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class ImgProject{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private Integer id;
 
 
-    @Column(length = 255, nullable = false)
-    private String link;
+    @Lob
+    private byte[] data;
+
 
 
 }

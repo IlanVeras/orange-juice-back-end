@@ -21,7 +21,7 @@ public class TagDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-   
+
         List<String> tagNames = Arrays.asList(
                 "JavaScript", "HTML", "CSS", "Java", "Python", "Ruby", "Swift", "TypeScript", "C#",
                 "ReactJS", "Angular", "VueJS", "NodeJS", "Django", "RubyonRails", "SpringFramework",
