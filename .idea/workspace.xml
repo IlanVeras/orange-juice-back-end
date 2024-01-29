@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="42449cd9-a674-402c-b85a-156101ad42c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/project/CreateProjectRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/project/CreateProjectRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/project/JsonProperty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/user/CreateUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/request/user/CreateUserRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/response/project/ProjectResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/response/project/ProjectResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/app/dto/response/project/UserResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/entity/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/orangeJuice/src/main/java/portifolioOrange/com/example/orangeJuice/domain/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,21 +19,36 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": -1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2bUs3B4KTmpqdGBiMpFFqir1OGJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -48,7 +57,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706280790111</updated>
+      <workItem from="1706376197963" duration="1293000" />
+      <workItem from="1706377717301" duration="1233000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
