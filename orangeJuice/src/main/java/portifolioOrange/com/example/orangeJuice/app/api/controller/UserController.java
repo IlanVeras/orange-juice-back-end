@@ -1,12 +1,12 @@
-package portifolioOrange.com.example.orangeJuice.app.controller;
+package portifolioOrange.com.example.orangeJuice.app.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import portifolioOrange.com.example.orangeJuice.app.UserApi;
-import portifolioOrange.com.example.orangeJuice.app.dto.request.user.CreateUserRequest;
-import portifolioOrange.com.example.orangeJuice.app.dto.response.user.UserResponse;
+import portifolioOrange.com.example.orangeJuice.app.api.UserApi;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.request.user.CreateUserRequest;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.response.user.UserResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 import portifolioOrange.com.example.orangeJuice.domain.exception.UserNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.service.UserService;

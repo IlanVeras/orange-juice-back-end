@@ -1,4 +1,4 @@
-package portifolioOrange.com.example.orangeJuice.app.dto.response.user;
+package portifolioOrange.com.example.orangeJuice.app.api.dto.response.tag;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,18 +11,9 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse {
+public class TagResponse {
 
     private UUID id;
 
     private String name;
-
-    private String surname;
-
-
-    private String nacionalidade;
-
-    private String email;
-
-
 }

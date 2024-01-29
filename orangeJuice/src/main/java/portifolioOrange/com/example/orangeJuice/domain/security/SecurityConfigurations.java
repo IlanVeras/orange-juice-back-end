@@ -1,6 +1,7 @@
 package portifolioOrange.com.example.orangeJuice.domain.security;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +30,20 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                
+                        .requestMatchers(HttpMethod.POST, "/v1/products/create").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/v1/products").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v1/products/{id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/v1/users").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/v1/users/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v1/features").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/v1/features/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/v1/cities").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v1/categories").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v1/categories/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v1/bookings").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/v1/bookings/{id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
+
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
@@ -45,3 +59,7 @@ public class SecurityConfigurations {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+}
+
+

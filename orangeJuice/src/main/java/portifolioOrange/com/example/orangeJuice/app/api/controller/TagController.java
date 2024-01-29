@@ -1,12 +1,12 @@
-package portifolioOrange.com.example.orangeJuice.app.controller;
+package portifolioOrange.com.example.orangeJuice.app.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import portifolioOrange.com.example.orangeJuice.app.TagApi;
-import portifolioOrange.com.example.orangeJuice.app.dto.request.tag.CreateTagRequest;
-import portifolioOrange.com.example.orangeJuice.app.dto.response.tag.TagResponse;
+import portifolioOrange.com.example.orangeJuice.app.api.TagApi;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.request.tag.CreateTagRequest;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.response.tag.TagResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
 import portifolioOrange.com.example.orangeJuice.domain.exception.TagNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.service.TagService;

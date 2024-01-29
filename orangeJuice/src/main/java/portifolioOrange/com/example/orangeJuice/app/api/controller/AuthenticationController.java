@@ -1,4 +1,4 @@
-package portifolioOrange.com.example.orangeJuice.app.controller;
+package portifolioOrange.com.example.orangeJuice.app.api.controller;
 
 
 import jakarta.validation.Valid;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import portifolioOrange.com.example.orangeJuice.app.dto.response.login.LoginResponse;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.response.login.LoginResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 import portifolioOrange.com.example.orangeJuice.domain.repository.UserRepository;
 import portifolioOrange.com.example.orangeJuice.domain.security.authConfiguration.CreateRegister;

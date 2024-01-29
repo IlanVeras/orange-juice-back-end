@@ -2,13 +2,16 @@ package portifolioOrange.com.example.orangeJuice.domain.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import portifolioOrange.com.example.orangeJuice.domain.security.SimpleGrantedAuthorityDeserializer;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,6 +25,7 @@ import java.util.UUID;
 @Table(name = "users")
 @JsonIgnoreProperties
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -33,8 +37,7 @@ public class User implements UserDetails {
 
     private String surname;
 
-    @Column(length = 80, nullable = false)
-
+    @Column(length = 255)
     private String nacionalidade;
 
     @Enumerated
@@ -47,6 +50,8 @@ public class User implements UserDetails {
     @Column(length = 255, nullable = false)
     private String password;
 
+    @JsonDeserialize(contentUsing = SimpleGrantedAuthorityDeserializer.class)
+    private List<GrantedAuthority> authorities;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Project> projects;
@@ -60,12 +65,11 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.role == EnumRole.ADMIN) {
-            return List.of(EnumRole.ADMIN, EnumRole.USER);
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
         } else {
-            return List.of(EnumRole.USER);
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
         }
     }
-
     @Override
     public String getUsername() {
         return email;

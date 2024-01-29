@@ -1,4 +1,4 @@
-package portifolioOrange.com.example.orangeJuice.app.dto.request.user;
+package portifolioOrange.com.example.orangeJuice.app.api.dto.request.user;
 
 
 
@@ -14,7 +14,7 @@ public class CreateUserRequest {
     @JsonProperty("surname")
     private String surname;
 
-    @NotBlank
+
     @JsonProperty("nacionalidade")
     private String nacionalidade;
     @NotBlank

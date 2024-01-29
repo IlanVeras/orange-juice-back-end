@@ -1,4 +1,4 @@
-package portifolioOrange.com.example.orangeJuice.app.dto.response.project;
+package portifolioOrange.com.example.orangeJuice.app.api.dto.response.project;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,11 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
-
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
-import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
 
 @Getter
 @Setter

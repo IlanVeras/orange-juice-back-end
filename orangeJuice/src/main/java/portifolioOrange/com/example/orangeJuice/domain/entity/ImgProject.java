@@ -20,8 +20,9 @@ import java.util.Base64;
 public class ImgProject{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
 
 
     @Lob
