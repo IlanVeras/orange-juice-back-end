@@ -14,7 +14,7 @@ public class CreateUserRequest {
     @JsonProperty("surname")
     private String surname;
 
-
+    @NotBlank
     @JsonProperty("nacionalidade")
     private String nacionalidade;
     @NotBlank

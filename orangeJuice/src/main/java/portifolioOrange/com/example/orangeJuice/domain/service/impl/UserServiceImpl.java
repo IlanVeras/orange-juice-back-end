@@ -35,15 +35,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(UUID id, Map<String, Object> params) {
-        User userToUpdate = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        User userToUpdate = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
 
         userToUpdate.setName(params.getOrDefault("name", userToUpdate.getName()).toString());
         userToUpdate.setSurname(params.getOrDefault("surname", userToUpdate.getSurname()).toString());
+        userToUpdate.setNacionalidade(params.getOrDefault("nacionalidade", userToUpdate.getNacionalidade()).toString());
         userToUpdate.setEmail(params.getOrDefault("email", userToUpdate.getEmail()).toString());
-        userToUpdate.setPassword(params.getOrDefault("password", userToUpdate.getPassword()).toString());
+
+        Object passwordParam = params.get("password");
+        if (passwordParam != null) {
+            userToUpdate.setPassword(passwordParam.toString());
+        }
 
         return userRepository.save(userToUpdate);
     }
+
 
     @Override
     public void delete(UUID id) {

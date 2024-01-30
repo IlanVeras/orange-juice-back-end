@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -24,5 +26,6 @@ public class UserResponse {
 
     private String email;
 
+    private List<Project> projects;
 
 }

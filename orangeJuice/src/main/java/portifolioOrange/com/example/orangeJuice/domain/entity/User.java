@@ -2,6 +2,7 @@ package portifolioOrange.com.example.orangeJuice.domain.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,10 +35,9 @@ public class User implements UserDetails {
     private String name;
 
     @Column(length = 255, nullable = false)
-
     private String surname;
 
-    @Column(length = 255)
+    @Column(nullable = false)
     private String nacionalidade;
 
     @Enumerated
@@ -53,15 +53,21 @@ public class User implements UserDetails {
     @JsonDeserialize(contentUsing = SimpleGrantedAuthorityDeserializer.class)
     private List<GrantedAuthority> authorities;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<Project> projects;
-    public User(String name, String surname, String email, String password, EnumRole role) {
+    public User(String name, String surname, String nacionalidade, String email, String password, EnumRole role) {
         this.name = name;
         this.surname = surname;
+        this.nacionalidade = nacionalidade;
         this.email = email;
         this.password = password;
         this.role = role;
     }
+
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.role == EnumRole.ADMIN) {

@@ -40,7 +40,7 @@ public class AuthenticationController {
 
         var token = tokenService.generateToken(user);
 
-        var loginResponse = new LoginResponse(token, user.getName(), user.getSurname(), user.getId(), user.getEmail());
+        var loginResponse = new LoginResponse(token, user.getName(),user.getSurname(), user.getNacionalidade(), user.getId(), user.getEmail(), user.getProjects());
 
         return ResponseEntity.ok(loginResponse);
     }
@@ -52,7 +52,7 @@ public class AuthenticationController {
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
 
-        User newUser = new User(data.name(), data.surname(), data.email(), encryptedPassword, data.role());
+        User newUser = new User(data.name(), data.surname(), data.nacionalidade(),data.email(), encryptedPassword, data.role());
 
         this.userRepository.save(newUser);
 

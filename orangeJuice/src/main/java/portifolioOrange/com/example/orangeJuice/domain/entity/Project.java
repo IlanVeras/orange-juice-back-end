@@ -1,6 +1,7 @@
 package portifolioOrange.com.example.orangeJuice.domain.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,6 +39,7 @@ public class Project {
     private LocalDateTime date;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
     @ManyToMany
     @JoinTable(
@@ -46,4 +48,13 @@ public class Project {
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<Tag> tags;
+    public Project(String titleProject, String link, String description, LocalDateTime date, User user) {
+        this.titleProject = titleProject;
+        this.link = link;
+        this.description = description;
+        this.date = date;
+        this.user = user;
+    }
+
+
 }
