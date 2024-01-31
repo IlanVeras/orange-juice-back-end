@@ -1,4 +1,4 @@
-package portifolioOrange.com.example.orangeJuice.app.controller;
+package portifolioOrange.com.example.orangeJuice.app.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import portifolioOrange.com.example.orangeJuice.app.ProjectApi;
-import portifolioOrange.com.example.orangeJuice.app.dto.request.project.CreateProjectRequest;
-import portifolioOrange.com.example.orangeJuice.app.dto.response.project.ProjectResponse;
+import portifolioOrange.com.example.orangeJuice.app.api.ProjectApi;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.request.project.CreateProjectRequest;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.response.project.ProjectResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
 import portifolioOrange.com.example.orangeJuice.domain.exception.ProjectNotFoundException;
 
@@ -72,6 +72,7 @@ public class ProjectController implements ProjectApi {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @Override
     public ResponseEntity<ProjectResponse> update(UUID id, Map<String, Object> params) {

@@ -1,4 +1,4 @@
-package portifolioOrange.com.example.orangeJuice.app.dto.request.user;
+package portifolioOrange.com.example.orangeJuice.app.api.dto.request.user;
 
 
 

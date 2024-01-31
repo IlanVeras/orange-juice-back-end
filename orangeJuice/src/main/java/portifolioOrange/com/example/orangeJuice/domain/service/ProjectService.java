@@ -9,6 +9,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ProjectService {
+
+
     List<Project> searchAll();
 
     Project searchById(UUID id);

@@ -1,14 +1,11 @@
-package portifolioOrange.com.example.orangeJuice.app;
+package portifolioOrange.com.example.orangeJuice.app.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import portifolioOrange.com.example.orangeJuice.app.dto.request.project.CreateProjectRequest;
-import portifolioOrange.com.example.orangeJuice.app.dto.response.project.ProjectResponse;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.request.project.CreateProjectRequest;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.response.project.ProjectResponse;
 
 import java.util.List;
 import java.util.Map;

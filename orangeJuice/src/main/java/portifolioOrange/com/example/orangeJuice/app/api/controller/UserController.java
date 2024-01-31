@@ -1,12 +1,12 @@
-package portifolioOrange.com.example.orangeJuice.app.controller;
+package portifolioOrange.com.example.orangeJuice.app.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import portifolioOrange.com.example.orangeJuice.app.UserApi;
-import portifolioOrange.com.example.orangeJuice.app.dto.request.user.CreateUserRequest;
-import portifolioOrange.com.example.orangeJuice.app.dto.response.user.UserResponse;
+import portifolioOrange.com.example.orangeJuice.app.api.UserApi;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.request.user.CreateUserRequest;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.response.user.UserResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 import portifolioOrange.com.example.orangeJuice.domain.exception.UserNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.service.UserService;
@@ -55,7 +55,7 @@ public class UserController implements UserApi {
     public ResponseEntity<List<UserResponse>> searchAll() {
         List<User> userList = userService.searchAll();
         List<UserResponse> userResponseList = userList.stream()
-                .map(user -> new UserResponse(user.getId(), user.getName(), user.getSurname(),user.getNacionalidade(), user.getEmail()))
+                .map(user -> new UserResponse(user.getId(), user.getName(), user.getNacionalidade(),user.getSurname(), user.getEmail(),user.getProjects()))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(userResponseList);
@@ -96,7 +96,7 @@ public class UserController implements UserApi {
     public ResponseEntity<List<UserResponse>> searchByName(@PathVariable String name) {
         List<User> userList = userService.searchByName(name);
         List<UserResponse> userResponseList = userList.stream()
-                .map(user -> new UserResponse(user.getId(), user.getName(), user.getSurname(),user.getNacionalidade(), user.getEmail()))
+                .map(user -> new UserResponse(user.getId(), user.getName(), user.getNacionalidade(),user.getSurname(), user.getEmail(),user.getProjects()))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(userResponseList);

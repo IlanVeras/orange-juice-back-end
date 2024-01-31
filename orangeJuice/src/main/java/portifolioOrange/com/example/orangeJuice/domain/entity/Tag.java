@@ -1,34 +1,31 @@
 package portifolioOrange.com.example.orangeJuice.domain.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.Base64;
 
+import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name= "ImgProject")
-@Table(name = "ImgProject")
+@Entity(name= "tag")
+@Table(name = "tags")
 @JsonIgnoreProperties
-public class ImgProject{
+public class Tag {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
+    @Column(length = 20, nullable = false)
+    private String name;
 
-
-    @Lob
-    private byte[] data;
-
-
-
+    @ManyToMany(mappedBy = "tags")
+    private List<Project> projects;
 }
-

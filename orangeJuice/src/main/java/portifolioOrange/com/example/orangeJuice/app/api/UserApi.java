@@ -1,11 +1,11 @@
-package portifolioOrange.com.example.orangeJuice.app;
+package portifolioOrange.com.example.orangeJuice.app.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import portifolioOrange.com.example.orangeJuice.app.dto.request.user.CreateUserRequest;
-import portifolioOrange.com.example.orangeJuice.app.dto.response.user.UserResponse;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.request.user.CreateUserRequest;
+import portifolioOrange.com.example.orangeJuice.app.api.dto.response.user.UserResponse;
 
 import java.util.List;
 import java.util.Map;
