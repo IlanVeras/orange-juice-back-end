@@ -18,11 +18,8 @@ import java.util.*;
 
 @Component
 public class PopulateDatabaseRunner implements CommandLineRunner {
-
     private final TagRepository tagRepository;
-
     private final ProjectRepository projectRepository;
-
     private final UserRepository userRepository;
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     public PopulateDatabaseRunner(TagRepository tagRepository, ProjectRepository projectRepository, UserRepository userRepository) {
@@ -31,21 +28,65 @@ public class PopulateDatabaseRunner implements CommandLineRunner {
         this.userRepository = userRepository;
     }
 
- 
     @Override
     public void run(String... args) throws Exception {
         Tag ui = new Tag();
         Tag ux = new Tag();
         Tag js = new Tag();
+        Tag python = new Tag();
+        Tag java = new Tag();
+        Tag c = new Tag();
+        Tag assembly = new Tag();
+        Tag php = new Tag();
+        Tag ruby = new Tag();
+        Tag kotlin = new Tag();
+        Tag cMais = new Tag();
+        Tag objectiveC = new Tag();
+        Tag r = new Tag();
+        Tag typeScript = new Tag();
+        Tag reactJS = new Tag();
+        Tag reactNative = new Tag();
+        Tag nodeJS = new Tag();
+        Tag mongoDB = new Tag();
+        Tag firebase = new Tag();
+        Tag mySQL = new Tag();
+        Tag sql = new Tag();
+        Tag html = new Tag();
         Tag css = new Tag();
-
+        Tag pascal = new Tag();
+        Tag portugol = new Tag();
+        Tag django = new Tag();
         ui.setName("UI");
         ux.setName("UX");
         js.setName("JS");
         css.setName("CSS");
-
-        tagRepository.saveAll(List.of(ui,ux,js,css));
-
+        python.setName("Python");
+        java.setName("Java");
+        c.setName("C#");
+        assembly.setName("Assembly");
+        php.setName("PHP");
+        ruby.setName("Ruby");
+        kotlin.setName("Kotlin");
+        cMais.setName("C++");
+        objectiveC.setName("Objective C");
+        r.setName("R");
+        typeScript.setName("TypeScript");
+        reactJS.setName("React.JS");
+        reactNative.setName("React Native");
+        nodeJS.setName("Node.JS");
+        mongoDB.setName("Mongo DB");
+        firebase.setName("Firebase");
+        sql.setName("SQL");
+        html.setName("HTML");
+        mySQL.setName("MySQL");
+        pascal.setName("Pascal");
+        portugol.setName("Portugol");
+        django.setName("Django");
+        tagRepository.saveAll(List.of(
+                ui, ux, js, python, java, c, assembly, php, ruby, kotlin,
+                cMais, objectiveC, r, typeScript, reactJS, reactNative, nodeJS,
+                mongoDB, firebase, mySQL, sql, html, css, pascal, portugol, django
+        ));
 
         List<User> userList = Arrays.asList(
                 new User("Carlos", "silva", "Brazil", "carlosSilva@gmail.com", "789012", EnumRole.USER),
@@ -61,6 +102,8 @@ public class PopulateDatabaseRunner implements CommandLineRunner {
             user.setPassword(encodedPassword);
             userRepository.save(user);
         }
+
+
         List<Project> projectList = Arrays.asList(
                 new Project("Projeto 1", "https://projeto1.com", "Descrição do Projeto 1", LocalDateTime.of(2022, 12, 15, 10, 0), userList.get(0)),
                 new Project("Projeto 2", "https://projeto2.com", "Descrição do Projeto 2", LocalDateTime.of(2022, 11, 20, 14, 30), userList.get(1)),
@@ -86,16 +129,6 @@ public class PopulateDatabaseRunner implements CommandLineRunner {
 
         projectRepository.saveAll(projectList);
 
-        List<String> tagNames = Arrays.asList("JS", "Python", "Java", "C#", "Assembly", "PHP", "Ruby", "Kotlin",
-                "C++", "Objective C", "R", "TypeScript", "React.JS", "React Native", "Node.JS", "Mongo DB","Firebase", "MySQL", "SQL", "HTML", "CSS", "Pascal", "Portugol", "UI", "Django", "UX");
-
-        List<Tag> tagList = new ArrayList<>();
-        for (String tagName : tagNames) {
-            Tag tag = new Tag();
-            tag.setName(tagName);
-            tagList.add(tag);
-        }
-        tagRepository.saveAll(tagList);
 
     }
 }

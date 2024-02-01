@@ -55,7 +55,7 @@ public class UserController implements UserApi {
     public ResponseEntity<List<UserResponse>> searchAll() {
         List<User> userList = userService.searchAll();
         List<UserResponse> userResponseList = userList.stream()
-                .map(user -> new UserResponse(user.getId(), user.getName(), user.getNacionalidade(),user.getSurname(), user.getEmail(),user.getProjects()))
+                .map(user -> new UserResponse(user.getId(), user.getName(),user.getSurname(), user.getNacionalidade(), user.getEmail(),user.getProjects()))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(userResponseList);

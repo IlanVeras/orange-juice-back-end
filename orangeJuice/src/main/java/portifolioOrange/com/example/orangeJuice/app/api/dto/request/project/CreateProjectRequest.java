@@ -4,8 +4,11 @@ package portifolioOrange.com.example.orangeJuice.app.api.dto.request.project;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
+import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Schema(hidden = true)
 public class CreateProjectRequest {
@@ -28,4 +31,9 @@ public class CreateProjectRequest {
     private LocalDateTime date;
 
 
+    @JsonProperty("user")
+    private User idUSer;
+
+    @JsonProperty("tags")
+    private List<Tag> tags;
 }

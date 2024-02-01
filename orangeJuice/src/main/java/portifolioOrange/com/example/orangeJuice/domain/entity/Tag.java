@@ -1,5 +1,6 @@
 package portifolioOrange.com.example.orangeJuice.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,5 @@ public class Tag {
     @Column(length = 20, nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "tags")
-    private List<Project> projects;
+
 }

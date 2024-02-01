@@ -1,6 +1,7 @@
 package portifolioOrange.com.example.orangeJuice.domain.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -24,7 +25,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity(name= "user")
 @Table(name = "users")
-@JsonIgnoreProperties
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class User implements UserDetails {
 
     @Id
@@ -36,6 +38,7 @@ public class User implements UserDetails {
 
     @Column(length = 255, nullable = false)
     private String surname;
+
 
     @Column(nullable = false)
     private String nacionalidade;
@@ -53,6 +56,7 @@ public class User implements UserDetails {
     @JsonDeserialize(contentUsing = SimpleGrantedAuthorityDeserializer.class)
     private List<GrantedAuthority> authorities;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Project> projects;

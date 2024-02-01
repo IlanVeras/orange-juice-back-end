@@ -5,6 +5,7 @@ import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
 import portifolioOrange.com.example.orangeJuice.domain.exception.ProjectNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.repository.ProjectRepository;
 import portifolioOrange.com.example.orangeJuice.domain.service.ProjectService;
+import portifolioOrange.com.example.orangeJuice.domain.service.TagService;
 
 import java.util.List;
 import java.util.Map;
@@ -15,9 +16,13 @@ public class ProjectServiceImpl implements ProjectService {
 
     private final ProjectRepository projectRepository;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository) {
+    private final TagService tagService;
+
+    public ProjectServiceImpl(ProjectRepository projectRepository, TagService tagService) {
         this.projectRepository = projectRepository;
+        this.tagService = tagService;
     }
+
 
 
     @Override
@@ -55,6 +60,17 @@ public class ProjectServiceImpl implements ProjectService {
     public void delete(UUID id) {
         projectRepository.findById(id).ifPresent(projectRepository::delete);
     }
+
+    @Override
+    public List<Project> searchByName(String titleProject) {
+        List<Project> projects = projectRepository.findByTitleProject(titleProject);
+        if (projects.isEmpty()) {
+            throw new ProjectNotFoundException(titleProject);
+        }
+        return projects;
+    }
+
+
 
 
 }

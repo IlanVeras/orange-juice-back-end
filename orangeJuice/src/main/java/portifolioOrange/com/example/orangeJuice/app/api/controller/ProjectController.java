@@ -3,16 +3,16 @@ package portifolioOrange.com.example.orangeJuice.app.api.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import portifolioOrange.com.example.orangeJuice.app.api.ProjectApi;
 import portifolioOrange.com.example.orangeJuice.app.api.dto.request.project.CreateProjectRequest;
 import portifolioOrange.com.example.orangeJuice.app.api.dto.response.project.ProjectResponse;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
+import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 import portifolioOrange.com.example.orangeJuice.domain.exception.ProjectNotFoundException;
 
+import portifolioOrange.com.example.orangeJuice.domain.repository.TagRepository;
 import portifolioOrange.com.example.orangeJuice.domain.service.ProjectService;
 
 import java.util.List;
@@ -24,10 +24,12 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*")
 public class ProjectController implements ProjectApi {
     private final ProjectService projectService;
+    private final TagRepository tagRepository;
     private final ObjectMapper mapper;
 
-    public ProjectController(ProjectService projectService, ObjectMapper mapper) {
+    public ProjectController(ProjectService projectService, TagRepository tagRepository, ObjectMapper mapper) {
         this.projectService = projectService;
+        this.tagRepository = tagRepository;
         this.mapper = mapper;
     }
 
@@ -55,11 +57,17 @@ public class ProjectController implements ProjectApi {
     public ResponseEntity<List<ProjectResponse>> searchAll() {
         List<Project> projectList = projectService.searchAll();
         List<ProjectResponse> projectResponseList = projectList.stream()
-                .map(project -> new ProjectResponse(project.getId(), project.getTitleProject(), project.getLink(), project.getDescription() ,project.getDate()))
+                .map(project -> {
+                    User user = project.getUser();
+                    UUID userId = (user != null) ? user.getId() : null;
+
+                    return new ProjectResponse(project.getId(), project.getTitleProject(), project.getLink(), project.getDescription(), project.getDate(), userId, project.getTags());
+                })
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(projectResponseList);
     }
+
 
     @Override
     public ResponseEntity<ProjectResponse> searchById(UUID id) {
@@ -91,4 +99,22 @@ public class ProjectController implements ProjectApi {
         projectService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+
+    @Override
+    public ResponseEntity<List<ProjectResponse>> searchByName(@PathVariable String name) {
+
+        List<Project> projectList = projectService.searchByName(name);
+        List<ProjectResponse> projectResponseList = projectList.stream()
+                .map(project -> {
+                    User user = project.getUser();
+                    UUID userId = (user != null) ? user.getId() : null;
+
+                    return new ProjectResponse(project.getId(), project.getTitleProject(), project.getLink(), project.getDescription(), project.getDate(), userId, project.getTags());
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(projectResponseList);
+    }
+
 }

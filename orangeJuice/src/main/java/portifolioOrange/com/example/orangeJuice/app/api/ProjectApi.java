@@ -35,4 +35,10 @@ public interface ProjectApi {
     @Operation(summary = "deleta um projeto", method = "DELETE")
     @DeleteMapping("deletar/{id}")
     ResponseEntity<Void> delete(@PathVariable UUID id);
+
+    @Operation(summary = "Buscar pelo Titutlo do projeto", method = "GET")
+    @GetMapping("/buscarPorNome/{name}")
+    ResponseEntity<List<ProjectResponse>> searchByName(@PathVariable String titleProject);
+
+
 }

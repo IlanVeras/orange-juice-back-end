@@ -1,6 +1,5 @@
 package portifolioOrange.com.example.orangeJuice.app.api.controller;
 
-
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +22,8 @@ import portifolioOrange.com.example.orangeJuice.domain.security.token.TokenServi
 public class AuthenticationController {
     @Autowired
     private UserRepository userRepository;
-
-
     @Autowired
     private AuthenticationManager authenticationManager;
-
     @Autowired
     private TokenService tokenService;
 
@@ -35,27 +31,18 @@ public class AuthenticationController {
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid CreatedAuthentication data) {
         var userNamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = this.authenticationManager.authenticate(userNamePassword);
-
         var user = (User) auth.getPrincipal();
-
         var token = tokenService.generateToken(user);
-
-        var loginResponse = new LoginResponse(token, user.getName(),user.getSurname(), user.getNacionalidade(), user.getId(), user.getEmail(), user.getProjects());
-
+        var loginResponse = new LoginResponse(token, user.getName(), user.getSurname(), user.getNacionalidade(), user.getId(), user.getEmail(), user.getProjects());
         return ResponseEntity.ok(loginResponse);
     }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid CreateRegister data) {
-
         if (this.userRepository.findByEmail(data.email()) != null) return ResponseEntity.badRequest().build();
-
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-
-        User newUser = new User(data.name(), data.surname(), data.nacionalidade(),data.email(), encryptedPassword, data.role());
-
+        User newUser = new User(data.name(), data.surname(), data.nacionalidade(), data.email(), encryptedPassword, data.role());
         this.userRepository.save(newUser);
-
         return ResponseEntity.ok().build();
     }
 }

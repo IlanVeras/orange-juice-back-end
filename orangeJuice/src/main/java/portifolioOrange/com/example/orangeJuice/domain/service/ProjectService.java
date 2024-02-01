@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public interface ProjectService {
 
+    List<Project> searchByName(String titleProject);
 
     List<Project> searchAll();
 
