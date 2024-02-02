@@ -37,12 +37,10 @@ public class TagController implements TagApi {
     }
 
     @Override
-    public ResponseEntity<TagResponse> create(CreateTagRequest request) {
+    public ResponseEntity<TagResponse> create(@RequestBody CreateTagRequest request) {
         Tag tag = mapper.convertValue(request, Tag.class);
         Tag createdTag = tagService.create(tag);
-
         TagResponse tagResponse = tagToTagResponse(createdTag);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(tagResponse);
     }
 

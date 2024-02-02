@@ -11,7 +11,7 @@ import java.util.UUID;
 public interface ProjectService {
 
     List<Project> searchByName(String titleProject);
-
+    List<Project> findByTags_Name(String tagName);
     List<Project> searchAll();
 
     Project searchById(UUID id);

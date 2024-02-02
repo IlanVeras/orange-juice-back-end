@@ -24,6 +24,11 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    public boolean findByNameIgnoreCase(String name) {
+        return tagRepository.findByNameIgnoreCase(name);
+    }
+
+    @Override
     public Tag searchById(UUID id) {
         return tagRepository.findById(id).orElseThrow(() -> new TagNotFoundException(id));
     }
@@ -37,8 +42,15 @@ public class TagServiceImpl implements TagService {
         return tags;
     }
 
+
     @Override
     public Tag create(Tag tag) {
+
+        if (tagRepository.existsByNameIgnoreCase(tag.getName())) {
+            throw new TagNotFoundException(tag.getName());
+        }
+
+
         return tagRepository.save(tag);
     }
     @Override

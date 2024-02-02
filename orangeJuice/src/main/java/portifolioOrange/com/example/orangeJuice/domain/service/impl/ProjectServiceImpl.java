@@ -70,7 +70,10 @@ public class ProjectServiceImpl implements ProjectService {
         return projects;
     }
 
-
+    @Override
+    public List<Project> findByTags_Name(String tagName) {
+        return projectRepository.findByTags_Name(tagName);
+    }
 
 
 }

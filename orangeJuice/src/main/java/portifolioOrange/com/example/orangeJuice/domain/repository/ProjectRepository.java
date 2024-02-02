@@ -17,7 +17,7 @@ import java.util.UUID;
 public interface ProjectRepository extends JpaRepository<Project, UUID> {
 
 
-
+    List<Project> findByTags_Name(String tagName);
     List<Project> findByTitleProject(String titleProject);
 
 }

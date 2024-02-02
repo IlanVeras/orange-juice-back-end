@@ -51,11 +51,12 @@ public class Project {
     @JsonIgnore
     private List<Tag> tags;
 
-    public Project(String titleProject, String link, String description, LocalDateTime date, User user) {
+    public Project(String titleProject, String link, String description, LocalDateTime date, User user, List<Tag> tags) {
         this.titleProject = titleProject;
         this.link = link;
         this.description = description;
         this.date = date;
         this.user = user;
+        this.tags = tags;
     }
 }

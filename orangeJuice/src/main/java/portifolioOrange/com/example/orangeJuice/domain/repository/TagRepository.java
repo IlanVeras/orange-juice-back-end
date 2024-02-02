@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 @Repository
 public interface TagRepository extends JpaRepository<Tag, UUID> {
-
-
+    boolean existsByNameIgnoreCase(String name);
+    boolean findByNameIgnoreCase(String name);
     List<Tag> findByName(String name);
 }

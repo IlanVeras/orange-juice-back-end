@@ -39,4 +39,6 @@ public interface UserApi {
     @Operation(summary = "Buscar pelo nome do usuário", method = "GET")
     @GetMapping("/buscarPorNome/{name}")
     ResponseEntity<List<UserResponse>> searchByName(@PathVariable String name);
+
+
 }

@@ -116,5 +116,19 @@ public class ProjectController implements ProjectApi {
 
         return ResponseEntity.ok(projectResponseList);
     }
+    @Override
+    @GetMapping("/byTag/{tagName}")
+    public ResponseEntity<List<ProjectResponse>> getProjectsByTag(@PathVariable String tagName) {
+        List<Project> projectList = projectService.findByTags_Name(tagName);
+        List<ProjectResponse> projectResponseList = projectList.stream()
+                .map(project -> {
+                    User user = project.getUser();
+                    UUID userId = (user != null) ? user.getId() : null;
 
+                    return new ProjectResponse(project.getId(), project.getTitleProject(), project.getLink(), project.getDescription(), project.getDate(), userId, project.getTags());
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(projectResponseList);
+    }
 }

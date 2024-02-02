@@ -40,5 +40,9 @@ public interface ProjectApi {
     @GetMapping("/buscarPorNome/{name}")
     ResponseEntity<List<ProjectResponse>> searchByName(@PathVariable String titleProject);
 
+    @Operation(summary = "Buscar projetos pelo nome da tag", method = "GET")
+    @GetMapping("/byTag/{tagName}")
+    ResponseEntity<List<ProjectResponse>> getProjectsByTag(@PathVariable String tagName);
+
 
 }
