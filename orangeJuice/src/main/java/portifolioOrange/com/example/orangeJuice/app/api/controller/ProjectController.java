@@ -72,9 +72,21 @@ public class ProjectController implements ProjectApi {
     @Override
     public ResponseEntity<ProjectResponse> searchById(UUID id) {
         Project project = projectService.searchById(id);
-        ProjectResponse projectResponse =  projectToProductDetailedResponse(project);
 
-        if(project != null) {
+        if (project != null) {
+            User user = project.getUser();
+            UUID userId = (user != null) ? user.getId() : null;
+
+            ProjectResponse projectResponse = new ProjectResponse(
+                    project.getId(),
+                    project.getTitleProject(),
+                    project.getLink(),
+                    project.getDescription(),
+                    project.getDate(),
+                    userId,
+                    project.getTags()
+            );
+
             return ResponseEntity.ok(projectResponse);
         } else {
             return ResponseEntity.notFound().build();

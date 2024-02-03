@@ -57,10 +57,14 @@ public class TagServiceImpl implements TagService {
     public Tag update(UUID id, Map<String, Object> params) {
         Tag tagToUpdate = tagRepository.findById(id).orElseThrow(() -> new TagNotFoundException(id));
 
-        tagToUpdate.setName(params.getOrDefault("name", tagToUpdate.getName()).toString());
 
+        if (params.containsKey("name") && params.get("name") instanceof String) {
+            tagToUpdate.setName((String) params.get("name"));
+        }
         return tagRepository.save(tagToUpdate);
     }
+
+
 
 
     @Override

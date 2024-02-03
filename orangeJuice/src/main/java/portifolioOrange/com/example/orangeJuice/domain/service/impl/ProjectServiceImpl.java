@@ -2,11 +2,14 @@ package portifolioOrange.com.example.orangeJuice.domain.service.impl;
 
 import org.springframework.stereotype.Service;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
+import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 import portifolioOrange.com.example.orangeJuice.domain.exception.ProjectNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.repository.ProjectRepository;
 import portifolioOrange.com.example.orangeJuice.domain.service.ProjectService;
 import portifolioOrange.com.example.orangeJuice.domain.service.TagService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -45,16 +48,49 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Project update(UUID id, Map<String, Object> params) {
-        Project projectToUpdate = projectRepository.findById(id).orElseThrow(() -> new ProjectNotFoundException(id));
 
-        projectToUpdate.setTitleProject(params.getOrDefault("titleProject", projectToUpdate.getTitleProject()).toString());
-        projectToUpdate.setLink(params.getOrDefault("link", projectToUpdate.getLink()).toString());
-        projectToUpdate.setDescription(params.getOrDefault("description", projectToUpdate.getDescription()).toString());
+        if (id == null || params == null) {
+
+            throw new IllegalArgumentException("ID e parâmetros não podem ser nulos.");
+        }
+
+        Project projectToUpdate = projectRepository.findById(id)
+                .orElseThrow(() -> new ProjectNotFoundException(id));
+
+
+
+        if (params.containsKey("titleProject") && params.get("titleProject") instanceof String) {
+            projectToUpdate.setTitleProject((String) params.get("titleProject"));
+        }
+
+
+        if (params.containsKey("link") && params.get("link") instanceof String) {
+            projectToUpdate.setLink((String) params.get("link"));
+        }
+
+
+        if (params.containsKey("description") && params.get("description") instanceof String) {
+            projectToUpdate.setDescription((String) params.get("description"));
+        }
+
+
+        if (params.containsKey("date") && params.get("date") instanceof LocalDateTime) {
+            projectToUpdate.setDate((LocalDateTime) params.get("date"));
+        }
+
+
+        if (params.containsKey("user") && params.get("user") instanceof User) {
+            projectToUpdate.setUser((User) params.get("user"));
+        }
+
+
+        if (params.containsKey("tags") && params.get("tags") instanceof List) {
+            projectToUpdate.setTags((List<Tag>) params.get("tags"));
+        }
+
 
         return projectRepository.save(projectToUpdate);
     }
-
-
 
     @Override
     public void delete(UUID id) {

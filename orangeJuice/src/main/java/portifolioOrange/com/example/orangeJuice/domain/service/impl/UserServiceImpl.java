@@ -1,7 +1,9 @@
 package portifolioOrange.com.example.orangeJuice.domain.service.impl;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.stereotype.Service;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Image;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 import portifolioOrange.com.example.orangeJuice.domain.exception.UserNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.repository.UserRepository;
@@ -33,23 +35,41 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+
     @Override
     public User update(UUID id, Map<String, Object> params) {
+        if (id == null || params == null) {
+            throw new UserNotFoundException(id);
+        }
+
         User userToUpdate = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
 
-        userToUpdate.setName(params.getOrDefault("name", userToUpdate.getName()).toString());
-        userToUpdate.setSurname(params.getOrDefault("surname", userToUpdate.getSurname()).toString());
-        userToUpdate.setNacionalidade(params.getOrDefault("nacionalidade", userToUpdate.getNacionalidade()).toString());
-        userToUpdate.setEmail(params.getOrDefault("email", userToUpdate.getEmail()).toString());
+        userToUpdate.setName(params.containsKey("name") && params.get("name") instanceof String
+                ? (String) params.get("name") : userToUpdate.getName());
+
+        userToUpdate.setSurname(params.containsKey("surname") && params.get("surname") instanceof String
+                ? (String) params.get("surname") : userToUpdate.getSurname());
+
+        userToUpdate.setNacionalidade(params.containsKey("nacionalidade") && params.get("nacionalidade") instanceof String
+                ? (String) params.get("nacionalidade") : userToUpdate.getNacionalidade());
+
+        userToUpdate.setEmail(params.containsKey("email") && params.get("email") instanceof String
+                ? (String) params.get("email") : userToUpdate.getEmail());
 
         Object passwordParam = params.get("password");
-        if (passwordParam != null) {
-            userToUpdate.setPassword(passwordParam.toString());
+        if (passwordParam != null && passwordParam instanceof String) {
+            userToUpdate.setPassword((String) passwordParam);
+        }
+
+        if (params.containsKey("projects") && params.get("projects") instanceof List) {
+            List<Project> updatedProjects = (List<Project>) params.get("projects");
+            userToUpdate.setProjects(updatedProjects);
         }
 
         return userRepository.save(userToUpdate);
     }
+
 
 
     @Override

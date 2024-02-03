@@ -64,14 +64,23 @@ public class UserController implements UserApi {
     @Override
     public ResponseEntity<UserResponse> searchById(UUID id) {
         User user = userService.searchById(id);
-        UserResponse userResponse = userToProductDetailedResponse(user);
 
         if (user != null) {
+            UserResponse userResponse = new UserResponse(
+                    user.getId(),
+                    user.getName(),
+                    user.getSurname(),
+                    user.getNacionalidade(),
+                    user.getEmail(),
+                    user.getProjects()
+            );
+
             return ResponseEntity.ok(userResponse);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @Override
     public ResponseEntity<UserResponse> update(UUID id, Map<String, Object> params) {

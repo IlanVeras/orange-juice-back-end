@@ -1,6 +1,7 @@
 package portifolioOrange.com.example.orangeJuice.app.runner;
 
 
+import jakarta.annotation.Resource;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,9 +10,11 @@ import portifolioOrange.com.example.orangeJuice.domain.entity.EnumRole;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
+import portifolioOrange.com.example.orangeJuice.domain.repository.ImageRepository;
 import portifolioOrange.com.example.orangeJuice.domain.repository.ProjectRepository;
 import portifolioOrange.com.example.orangeJuice.domain.repository.TagRepository;
 import portifolioOrange.com.example.orangeJuice.domain.repository.UserRepository;
+import portifolioOrange.com.example.orangeJuice.domain.service.ImageService;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -21,15 +24,20 @@ public class PopulateDatabaseRunner implements CommandLineRunner {
     private final TagRepository tagRepository;
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
+    private final   ImageRepository storageService;
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    public PopulateDatabaseRunner(TagRepository tagRepository, ProjectRepository projectRepository, UserRepository userRepository) {
+    public PopulateDatabaseRunner(TagRepository tagRepository, ProjectRepository projectRepository, UserRepository userRepository, ImageRepository storageService) {
         this.tagRepository = tagRepository;
         this.projectRepository = projectRepository;
         this.userRepository = userRepository;
+        this.storageService = storageService;
     }
+
 
     @Override
     public void run(String... args) throws Exception {
+
+
         Tag ui = new Tag();
         Tag ux = new Tag();
         Tag js = new Tag();
