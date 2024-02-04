@@ -41,15 +41,6 @@ public class UserController implements UserApi {
         return mapper.convertValue(user, UserResponse.class);
     }
 
-    @Override
-    public ResponseEntity<UserResponse> create(CreateUserRequest request) {
-        User user = mapper.convertValue(request, User.class);
-        User createdUser = userService.create(user);
-
-        UserResponse userResponse = userToProductDetailedResponse(createdUser);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
-    }
 
     @Override
     public ResponseEntity<List<UserResponse>> searchAll() {

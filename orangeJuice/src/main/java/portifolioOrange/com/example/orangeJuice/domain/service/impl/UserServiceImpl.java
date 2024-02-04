@@ -30,11 +30,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
-    public User create(User user) {
-        return userRepository.save(user);
-    }
-
 
     @Override
     public User update(UUID id, Map<String, Object> params) {

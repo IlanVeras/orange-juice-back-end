@@ -57,21 +57,21 @@ public class ImageController {
         List<Image> imageList = imageService.viewAll();
         return ResponseEntity.ok().body(imageList);
     }
-    @PostMapping("/add")
-    public ResponseEntity<String> addImage(@RequestParam("image") MultipartFile file) {
-        try {
-            byte[] bytes = file.getBytes();
-            String base64EncodedImage = Base64.getEncoder().encodeToString(bytes);
+        @PostMapping("/add")
+        public ResponseEntity<String> addImage(@RequestParam("image") MultipartFile file) {
+            try {
+                byte[] bytes = file.getBytes();
+                String base64EncodedImage = Base64.getEncoder().encodeToString(bytes);
 
-            Image image = new Image();
-            image.setImage(base64EncodedImage);
-            imageService.create(image);
+                Image image = new Image();
+                image.setImage(base64EncodedImage);
+                imageService.create(image);
 
-            return ResponseEntity.status(HttpStatus.CREATED).body("Image added successfully.");
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add image.");
+                return ResponseEntity.status(HttpStatus.CREATED).body("Image added successfully.");
+            } catch (IOException e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add image.");
+            }
         }
-    }
 
 
 }

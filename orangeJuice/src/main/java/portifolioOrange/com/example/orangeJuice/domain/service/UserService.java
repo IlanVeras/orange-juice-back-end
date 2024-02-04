@@ -16,7 +16,7 @@ public interface UserService {
 
     User searchById(UUID id);
 
-   User create(User user);
+
 
     User update(UUID id, Map<String, Object> params);
 

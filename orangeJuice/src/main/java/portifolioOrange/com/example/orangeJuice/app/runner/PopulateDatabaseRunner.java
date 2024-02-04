@@ -1,21 +1,21 @@
 package portifolioOrange.com.example.orangeJuice.app.runner;
 
 
-import jakarta.annotation.Resource;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import portifolioOrange.com.example.orangeJuice.domain.entity.EnumRole;
-import portifolioOrange.com.example.orangeJuice.domain.entity.Project;
-import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
-import portifolioOrange.com.example.orangeJuice.domain.entity.User;
+import portifolioOrange.com.example.orangeJuice.domain.entity.*;
 import portifolioOrange.com.example.orangeJuice.domain.repository.ImageRepository;
 import portifolioOrange.com.example.orangeJuice.domain.repository.ProjectRepository;
 import portifolioOrange.com.example.orangeJuice.domain.repository.TagRepository;
 import portifolioOrange.com.example.orangeJuice.domain.repository.UserRepository;
 import portifolioOrange.com.example.orangeJuice.domain.service.ImageService;
 
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -24,18 +24,21 @@ public class PopulateDatabaseRunner implements CommandLineRunner {
     private final TagRepository tagRepository;
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
-    private final   ImageRepository storageService;
+    private final   ImageRepository imageRepository;
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    public PopulateDatabaseRunner(TagRepository tagRepository, ProjectRepository projectRepository, UserRepository userRepository, ImageRepository storageService) {
+    public PopulateDatabaseRunner(TagRepository tagRepository, ProjectRepository projectRepository, UserRepository userRepository, ImageRepository storageService, ImageRepository imageRepository, ImageService imageService) {
         this.tagRepository = tagRepository;
         this.projectRepository = projectRepository;
         this.userRepository = userRepository;
-        this.storageService = storageService;
+        this.imageRepository = imageRepository;
+
     }
 
 
     @Override
     public void run(String... args) throws Exception {
+
+
 
 
         Tag ui = new Tag();

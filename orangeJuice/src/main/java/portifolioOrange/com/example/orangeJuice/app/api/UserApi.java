@@ -15,9 +15,6 @@ import java.util.UUID;
 @Tag(name = "Usuarios")
 public interface UserApi {
 
-    @Operation(summary = "Cria um usuário", method = "POST")
-    @PostMapping("criarUsuario")
-    ResponseEntity<UserResponse> create(@RequestBody CreateUserRequest request);
 
     @Operation(summary = "Busca todos os usuários", method = "GET")
     @GetMapping("todos")

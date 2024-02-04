@@ -30,9 +30,14 @@ public class SecurityConfigurations {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // Adicione essa linha para permitir recursos estáticos
-                        .requestMatchers(new AntPathRequestMatcher("/api/images/upload")).permitAll() // Permitir acesso a este endpoint sem autenticação, ajuste conforme necessário
-                        .requestMatchers(new AntPathRequestMatcher( "/swagger-ui/**")).permitAll() // Permitir acesso ao Swagger sem autenticação
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/api/images/upload")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher( "/swagger-ui/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher( "/auth/register")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher( "/auth/login")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher( "/v1/tags**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher( "/v1/projects**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher( "/v1/users**")).permitAll()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
