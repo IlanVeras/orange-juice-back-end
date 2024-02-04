@@ -49,8 +49,29 @@ public class ImageController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Image not found".getBytes());
         }
     }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateImage(@PathVariable UUID id, @RequestParam("image") MultipartFile file) {
+        try {
+            Optional<Image> optionalImage = imageService.viewById(id);
 
+            if (optionalImage.isPresent()) {
+                byte[] bytes = file.getBytes();
+                String base64EncodedImage = Base64.getEncoder().encodeToString(bytes);
 
+                Image updatedImage = new Image();
+                updatedImage.setId(id);  // Set the ID of the existing image
+                updatedImage.setImage(base64EncodedImage);
+
+                imageService.update(id, Map.of("imageData", bytes));  // Assuming the service supports the update method
+
+                return ResponseEntity.status(HttpStatus.OK).body("Image updated successfully.");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Image not found.");
+            }
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update image.");
+        }
+    }
 
     @GetMapping("")
     public ResponseEntity<List<Image>> getAllImages() {

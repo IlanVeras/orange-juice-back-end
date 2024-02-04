@@ -6,9 +6,7 @@ import portifolioOrange.com.example.orangeJuice.domain.entity.Image;
 import portifolioOrange.com.example.orangeJuice.domain.repository.ImageRepository;
 import portifolioOrange.com.example.orangeJuice.domain.service.ImageService;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -19,6 +17,22 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public Image create(Image image) {
         return imageRepository.save(image);
+    }
+    @Override
+    public Image update(UUID id, Map<String, Object> params) {
+        Optional<Image> optionalImage = imageRepository.findById(id);
+
+        if (optionalImage.isPresent()) {
+            Image image = optionalImage.get();
+            if (params.containsKey("imageData")) {
+                byte[] newImageData = (byte[]) params.get("imageData");
+                image.setImage(Base64.getEncoder().encodeToString(newImageData));
+            }
+
+            return imageRepository.save(image);
+        } else {
+            return null;
+        }
     }
 
     @Override
