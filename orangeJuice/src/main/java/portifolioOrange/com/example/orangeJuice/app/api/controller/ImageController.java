@@ -39,7 +39,7 @@ public class ImageController {
                 byte[] decodedImage = Base64.getDecoder().decode(base64EncodedImage);
 
                 HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.IMAGE_JPEG); // Ou o tipo de mídia apropriado para o seu caso
+                headers.setContentType(MediaType.IMAGE_JPEG);
 
                 return ResponseEntity.ok().headers(headers).body(decodedImage);
             } catch (IllegalArgumentException e) {

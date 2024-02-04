@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Image;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
 
 import java.time.LocalDateTime;
@@ -29,6 +30,9 @@ public class ProjectResponse {
     private UUID user;
 
     private List<Tag> tags;
+
+    private List<Image> images;
+
 
 
 }

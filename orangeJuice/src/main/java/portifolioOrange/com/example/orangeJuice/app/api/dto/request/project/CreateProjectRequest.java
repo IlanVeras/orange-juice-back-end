@@ -4,6 +4,7 @@ package portifolioOrange.com.example.orangeJuice.app.api.dto.request.project;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import portifolioOrange.com.example.orangeJuice.domain.entity.Image;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Tag;
 import portifolioOrange.com.example.orangeJuice.domain.entity.User;
 
@@ -36,4 +37,8 @@ public class CreateProjectRequest {
 
     @JsonProperty("tags")
     private List<Tag> tags;
+
+    @JsonProperty("images")
+    private List<Image> images;
+
 }

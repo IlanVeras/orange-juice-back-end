@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
+
 public interface ImageService {
     Image create(Image image);
     List<Image> viewAll();
