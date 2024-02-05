@@ -3,6 +3,7 @@ package portifolioOrange.com.example.orangeJuice.domain.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Image;
+import portifolioOrange.com.example.orangeJuice.domain.exception.ImageNotFoundException;
 import portifolioOrange.com.example.orangeJuice.domain.repository.ImageRepository;
 import portifolioOrange.com.example.orangeJuice.domain.service.ImageService;
 
@@ -33,6 +34,18 @@ public class ImageServiceImpl implements ImageService {
         } else {
             return null;
         }
+    }
+    @Override
+    public List<Image> findByName(String imageData) {
+        List<Image> images = imageRepository.findByName(imageData);
+        if (images.isEmpty()) {
+            try {
+                throw new ImageNotFoundException(imageData);
+            } catch (ImageNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return images;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package portifolioOrange.com.example.orangeJuice.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+
 import java.util.UUID;
 
 @Getter
@@ -17,7 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity(name= "tag")
 @Table(name = "tags")
-@JsonIgnoreProperties
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Tag {
 
     @Id
@@ -26,6 +26,5 @@ public class Tag {
 
     @Column(length = 20, nullable = false)
     private String name;
-
-
 }
+

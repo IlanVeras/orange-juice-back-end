@@ -41,20 +41,23 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new UserNotFoundException(id));
 
         userToUpdate.setName(params.containsKey("name") && params.get("name") instanceof String
-                ? (String) params.get("name") : userToUpdate.getName());
+                ? ((String) params.get("name")).trim() : userToUpdate.getName());
 
         userToUpdate.setSurname(params.containsKey("surname") && params.get("surname") instanceof String
-                ? (String) params.get("surname") : userToUpdate.getSurname());
+                ? ((String) params.get("surname")).trim() : userToUpdate.getSurname());
 
         userToUpdate.setNacionalidade(params.containsKey("nacionalidade") && params.get("nacionalidade") instanceof String
-                ? (String) params.get("nacionalidade") : userToUpdate.getNacionalidade());
+                ? ((String) params.get("nacionalidade")).trim() : userToUpdate.getNacionalidade());
 
         userToUpdate.setEmail(params.containsKey("email") && params.get("email") instanceof String
-                ? (String) params.get("email") : userToUpdate.getEmail());
+                ? ((String) params.get("email")).trim() : userToUpdate.getEmail());
 
         Object passwordParam = params.get("password");
         if (passwordParam != null && passwordParam instanceof String) {
-            userToUpdate.setPassword((String) passwordParam);
+            String password = ((String) passwordParam).trim();
+            if (!password.isEmpty()) {
+                userToUpdate.setPassword(password);
+            }
         }
 
         if (params.containsKey("projects") && params.get("projects") instanceof List) {
@@ -64,6 +67,7 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(userToUpdate);
     }
+
 
 
 

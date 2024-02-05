@@ -1,6 +1,5 @@
 package portifolioOrange.com.example.orangeJuice.domain.service;
 
-import org.springframework.stereotype.Service;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Image;
 
 import java.util.List;
@@ -16,5 +15,5 @@ public interface ImageService {
     List<Image> viewAll();
     Optional<Image> viewById(UUID id);
 
-
+    List<Image> findByName(String name);
 }

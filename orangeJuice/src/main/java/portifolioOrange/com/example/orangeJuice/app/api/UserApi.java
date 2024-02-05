@@ -1,6 +1,8 @@
 package portifolioOrange.com.example.orangeJuice.app.api;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,27 +15,28 @@ import java.util.UUID;
 
 @RequestMapping("/v1/users")
 @Tag(name = "Usuarios")
+@Schema(hidden = true)
 public interface UserApi {
 
 
-    @Operation(summary = "Busca todos os usuários", method = "GET")
+    @Operation(summary = "Search all the users", method = "GET")
     @GetMapping("todos")
     ResponseEntity<List<UserResponse>> searchAll();
 
-    @Operation(summary = "Busca um usuário por id", method = "GET")
+    @Operation(summary = "Search an user by id", method = "GET")
     @GetMapping("buscar/{id}")
     ResponseEntity<UserResponse> searchById(@PathVariable UUID id);
 
 
-    @Operation(summary = "Atualiza um usuário por id", method = "PATCH")
+    @Operation(summary = "Search an user by id", method = "PATCH")
     @PatchMapping("atualizar/{id}")
     ResponseEntity<UserResponse> update(@PathVariable UUID id, @RequestBody Map<String, Object> params);
 
-    @Operation(summary = "deleta um usuário", method = "DELETE")
+    @Operation(summary = "Delete an user.", method = "DELETE")
     @DeleteMapping("deletar/{id}")
     ResponseEntity<Void> delete(@PathVariable UUID id);
 
-    @Operation(summary = "Buscar pelo nome do usuário", method = "GET")
+    @Operation(summary = "Search by user name.", method = "GET")
     @GetMapping("/buscarPorNome/{name}")
     ResponseEntity<List<UserResponse>> searchByName(@PathVariable String name);
 

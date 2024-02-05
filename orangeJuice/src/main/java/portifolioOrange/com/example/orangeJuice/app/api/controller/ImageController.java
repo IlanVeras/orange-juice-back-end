@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import portifolioOrange.com.example.orangeJuice.app.api.ImageApi;
 import portifolioOrange.com.example.orangeJuice.domain.entity.Image;
 import portifolioOrange.com.example.orangeJuice.domain.service.ImageService;
 import org.springframework.http.HttpHeaders;
@@ -16,18 +17,13 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/images")
-public class ImageController {
+public class ImageController implements ImageApi {
 
     @Autowired
     private ImageService imageService;
 
-    @GetMapping("/ping")
-    public String ping() {
-        return "Hello World!";
-    }
 
 
-    @GetMapping("/{id}")
     public ResponseEntity<byte[]> displayImage(@PathVariable UUID id) {
         Optional<Image> optionalImage = imageService.viewById(id);
 
@@ -49,7 +45,7 @@ public class ImageController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Image not found".getBytes());
         }
     }
-    @PutMapping("/update/{id}")
+
     public ResponseEntity<String> updateImage(@PathVariable UUID id, @RequestParam("image") MultipartFile file) {
         try {
             Optional<Image> optionalImage = imageService.viewById(id);
@@ -73,12 +69,12 @@ public class ImageController {
         }
     }
 
-    @GetMapping("")
+
     public ResponseEntity<List<Image>> getAllImages() {
         List<Image> imageList = imageService.viewAll();
         return ResponseEntity.ok().body(imageList);
     }
-        @PostMapping("/add")
+
         public ResponseEntity<String> addImage(@RequestParam("image") MultipartFile file) {
             try {
                 byte[] bytes = file.getBytes();

@@ -1,5 +1,6 @@
 package portifolioOrange.com.example.orangeJuice.app.api.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
+    @Operation(summary = "Login with an user account", method = "POST")
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid CreatedAuthentication data) {
         var userNamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
@@ -36,7 +38,7 @@ public class AuthenticationController {
         var loginResponse = new LoginResponse(token, user.getName(), user.getSurname(), user.getNacionalidade(), user.getId(), user.getEmail(), user.getProjects());
         return ResponseEntity.ok(loginResponse);
     }
-
+    @Operation(summary = "Register an user account.", method = "POST")
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid CreateRegister data) {
         if (this.userRepository.findByEmail(data.email()) != null) return ResponseEntity.badRequest().build();

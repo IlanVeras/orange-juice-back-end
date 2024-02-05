@@ -55,14 +55,22 @@ public class TagServiceImpl implements TagService {
     }
     @Override
     public Tag update(UUID id, Map<String, Object> params) {
+        if (id == null || params == null) {
+            throw new IllegalArgumentException("ID e parâmetros não podem ser nulos.");
+        }
+
         Tag tagToUpdate = tagRepository.findById(id).orElseThrow(() -> new TagNotFoundException(id));
 
-
         if (params.containsKey("name") && params.get("name") instanceof String) {
-            tagToUpdate.setName((String) params.get("name"));
+            String name = (String) params.get("name");
+            if (!name.trim().isEmpty()) {
+                tagToUpdate.setName(name.trim());
+            }
         }
+
         return tagRepository.save(tagToUpdate);
     }
+
 
 
 
