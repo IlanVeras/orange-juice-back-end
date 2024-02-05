@@ -67,6 +67,7 @@ public class ProjectController implements ProjectApi {
         return ResponseEntity.status(HttpStatus.CREATED).body(projectResponse);
     }
 
+
     @Override
     public ResponseEntity<List<ProjectResponse>> searchAll() {
         List<Project> projectList = projectService.searchAll();

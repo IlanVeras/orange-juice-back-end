@@ -121,15 +121,6 @@ public class PopulateDatabaseRunner implements CommandLineRunner {
 
         String imagePath = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\crypto.png";
         String digital_art = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\digital-art.png";
-        String hat_ecommerce = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\hat-ecormece.jpg";
-        String droid_pod = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\droid-pod.png";
-        String host_reserve = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\host-reserve.png";
-        String kingsman = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\kingsman.jpg";
-        String natural_skin = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\natural-skin.jpg";
-        String nike = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\nike.png";
-        String storm_store = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\stormtrooper-store.png";
-        String witcher = "C:\\Users\\User\\Documents\\BAKCEND\\orange-juice-back-end\\orangeJuice\\src\\main\\java\\portifolioOrange\\com\\example\\orangeJuice\\app\\runner\\imageRunner\\the-witcher.jpg";
-
 
             byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
             String base64EncodedImage = Base64.getEncoder().encodeToString(imageBytes);

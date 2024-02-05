@@ -9,7 +9,7 @@ import java.util.UUID;
 @Schema(hidden = true)
 public class ImageRequest {
 
-    @NotBlank
+
     @JsonProperty("image")
     private String image;
     @NotBlank

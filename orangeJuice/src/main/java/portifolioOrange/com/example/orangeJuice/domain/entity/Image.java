@@ -22,8 +22,9 @@ import java.util.UUID;
 public class Image {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
 
 
     @Lob
