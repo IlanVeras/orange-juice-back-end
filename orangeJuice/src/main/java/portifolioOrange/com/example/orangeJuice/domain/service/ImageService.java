@@ -15,5 +15,5 @@ public interface ImageService {
     List<Image> viewAll();
     Optional<Image> viewById(UUID id);
 
-    List<Image> findByName(String name);
+    List<Image> findByName(String image);
 }

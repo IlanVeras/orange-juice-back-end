@@ -37,7 +37,7 @@ public class ImageServiceImpl implements ImageService {
     }
     @Override
     public List<Image> findByName(String imageData) {
-        List<Image> images = imageRepository.findByName(imageData);
+        List<Image> images = imageRepository.findByImage(imageData);
         if (images.isEmpty()) {
             try {
                 throw new ImageNotFoundException(imageData);

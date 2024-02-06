@@ -11,5 +11,5 @@ import java.util.UUID;
 @Repository
 public interface ImageRepository extends JpaRepository<Image, UUID> {
 
-    List<Image> findByName(String name);
+    List<Image> findByImage(String imageData);
 }

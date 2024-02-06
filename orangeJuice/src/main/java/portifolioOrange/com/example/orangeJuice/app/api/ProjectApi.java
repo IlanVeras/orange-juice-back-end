@@ -30,7 +30,7 @@ public interface ProjectApi {
     ResponseEntity<ProjectResponse> searchById(@PathVariable UUID id);
 
 
-    @Operation(summary = "Update a project by id", method = "PATCH")
+    @Operation(summary = "Update a project by id, tags de image e tags são geradas automaticamente.", method = "PATCH")
     @PatchMapping("atualizar/{id}")
     ResponseEntity<ProjectResponse> update(@PathVariable UUID id, @RequestBody Map<String, Object> params);
 

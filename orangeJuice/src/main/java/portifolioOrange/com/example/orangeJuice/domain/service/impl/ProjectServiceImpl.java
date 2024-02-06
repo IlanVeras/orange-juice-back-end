@@ -121,15 +121,15 @@ public class ProjectServiceImpl implements ProjectService {
 
             for (Map<String, Object> imageMap : imageList) {
                 if (imageMap.containsKey("image") && imageMap.get("image") instanceof String) {
-                    String imageData = (String) imageMap.get("image");
+                    String image = (String) imageMap.get("image");
 
 
-                    List<Image> existingImages = imageRepository.findByName(imageData);
+                    List<Image> existingImages = imageRepository.findByImage(image);
 
 
-                    Image image = existingImages.isEmpty() ? new Image(UUID.randomUUID(), imageData) : existingImages.get(0);
+                    Image image1 = existingImages.isEmpty() ? new Image(UUID.randomUUID(), image) : existingImages.get(0);
 
-                    updatedImages.add(image);
+                    updatedImages.add(image1);
                 }
             }
 
